@@ -34,19 +34,50 @@ void loop() {
       if(buttonState != buttonLast) {
         if(buttonState == HIGH) {
           buttonPush++;
-          if(buttonPush == 3) {
+          if(buttonPush == 5) {
             buttonPush = 0;
           }
         }
       }
       buttonLast = buttonState;
+      digitalWrite(ledG, LOW);
+      digitalWrite(ledY, LOW);
+      digitalWrite(ledR, LOW);
       
+      if(buttonPush == 0) {
+        digitalWrite(ledG, LOW);
+        digitalWrite(ledY, LOW);
+        digitalWrite(ledR, LOW);
+      }
       if(buttonPush == 1) {
         if(ledGState == LOW)
           ledGState = HIGH;
         else
           ledGState = LOW;
         digitalWrite(ledG, ledGState);
+      }
+      if(buttonPush == 2) {
+        if(ledYState == LOW)
+          ledYState = HIGH;
+        else
+          ledYState = LOW;
+        digitalWrite(ledY, ledYState);
+      }
+      if(buttonPush == 3) {
+        if(ledRState == LOW)
+          ledRState = HIGH;
+        else
+          ledRState = LOW;
+        digitalWrite(ledR, ledRState);
+      }
+      if(buttonPush == 4) {
+        if(ledGState != LOW)
+          ledGState = LOW;
+        else
+          ledGState = HIGH;
+        digitalWrite(ledG, ledGState);
+        digitalWrite(ledY, ledGState);
+        digitalWrite(ledR, ledGState);
       }
   }
 }
