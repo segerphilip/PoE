@@ -34,7 +34,7 @@ void loop() {
     if (buttonState != buttonLast) {
       if (buttonState == HIGH) {
         buttonPush++;
-        if (buttonPush == 4) {
+        if (buttonPush == 5) {
           buttonPush = 0;
         }
       Serial.println('buttonPush');
@@ -74,6 +74,24 @@ void loop() {
       }
       digitalWrite(ledR, ledRState); 
     }
+    else if (buttonPush == 4) {
+      digitalWrite(ledG, HIGH); 
+      digitalWrite(ledR, HIGH); 
+      digitalWrite(ledY, HIGH);
+      
+      if(ledGState == LOW) {
+        ledGState = HIGH; 
+        ledRState = HIGH;
+        ledYState = HIGH; 
+      } else {
+        ledGState = LOW; 
+        ledRState = LOW;
+        ledYState = LOW;  
+      }
+      digitalWrite(ledR, ledRState);
+      digitalWrite(ledG, ledGState);
+      digitalWrite(ledY, ledYState);
+    }  
   }
 }
 
